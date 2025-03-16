@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library App</title>
+  </head>
+  <body>
+    <h1>Library App</h1>
+    <nav><a href="/">Home</a> | <a href="/add">Add Book</a></nav>
+    <ul>
+      <% books.forEach((book) => { %>
+      <li>
+        <strong><%= book.title %></strong> by <%= book.author %> (<%=
+        book.available ? 'Available' : 'Not Available' %>)
+        <a href="/edit/<%= book.id %>">Edit</a>
+        <form action="/delete/<%= book.id %>?_method=DELETE" method="POST">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>
